@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/actors/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/fx/trail.gd" id="2_trail"]
+
+[sub_resource type="RectangleShape2D" id="body_shape"]
+size = Vector2(14, 18)
+
+[sub_resource type="RectangleShape2D" id="hurt_shape"]
+size = Vector2(13, 17)
+
+[sub_resource type="Gradient" id="trail_grad"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.7)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_player")
+
+[node name="Trail" type="Line2D" parent="."]
+z_index = -1
+width = 6.0
+gradient = SubResource("trail_grad")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+modulate = Color(0.4, 0.9, 1, 0.7)
+script = ExtResource("2_trail")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("body_shape")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Body" type="Polygon2D" parent="Visual"]
+color = Color(0.3, 0.85, 1, 1)
+polygon = PackedVector2Array(-6, -2, 6, -2, 6, 9, -6, 9)
+
+[node name="Head" type="Polygon2D" parent="Visual"]
+color = Color(0.55, 0.92, 1, 1)
+polygon = PackedVector2Array(-5, -10, 5, -10, 5, -2, -5, -2)
+
+[node name="Eye" type="Polygon2D" parent="Visual"]
+color = Color(0.05, 0.1, 0.16, 1)
+polygon = PackedVector2Array(1, -8, 4, -8, 4, -5, 1, -5)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="HurtShape" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("hurt_shape")
