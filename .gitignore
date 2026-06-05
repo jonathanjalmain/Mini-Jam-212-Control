@@ -1,0 +1,16 @@
+# Godot 4+ engine cache (regenerated on import)
+.godot/
+
+# Exported builds
+/build/
+/export/
+*.exe
+*.pck
+*.zip
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+
+# Agent / tooling artifacts
+.claude/
