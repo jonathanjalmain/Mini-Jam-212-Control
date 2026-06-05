@@ -1,39 +1,30 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/actors/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/actors/clone.gd" id="1_clone"]
 [ext_resource type="Script" path="res://scripts/fx/trail.gd" id="2_trail"]
 
 [sub_resource type="RectangleShape2D" id="body_shape"]
 size = Vector2(14, 18)
 
-[sub_resource type="RectangleShape2D" id="hurt_shape"]
-size = Vector2(13, 17)
-
 [sub_resource type="Gradient" id="trail_grad"]
 offsets = PackedFloat32Array(0, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.7)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.6)
 
 [sub_resource type="SystemFont" id="mono"]
 font_names = PackedStringArray("Consolas", "Lucida Console", "Courier New", "monospace")
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 9
-z_index = 20
-script = ExtResource("1_player")
-
-[node name="Camera" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-position_smoothing_speed = 7.0
+[node name="Clone" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_clone")
 
 [node name="Trail" type="Line2D" parent="."]
 z_index = -1
-width = 6.0
+width = 5.0
 gradient = SubResource("trail_grad")
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
-modulate = Color(0.4, 0.9, 1, 0.7)
 script = ExtResource("2_trail")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
@@ -42,34 +33,23 @@ shape = SubResource("body_shape")
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Body" type="Polygon2D" parent="Visual"]
-color = Color(0.35, 1.0, 1.25, 1)
+color = Color(1, 1, 1, 1)
 polygon = PackedVector2Array(-6, -2, 6, -2, 6, 9, -6, 9)
 
 [node name="Head" type="Polygon2D" parent="Visual"]
-color = Color(0.6, 1.15, 1.45, 1)
+color = Color(0.82, 0.82, 0.82, 1)
 polygon = PackedVector2Array(-5, -10, 5, -10, 5, -2, -5, -2)
 
 [node name="Eye" type="Polygon2D" parent="Visual"]
-color = Color(0.05, 0.1, 0.16, 1)
+color = Color(0.08, 0.08, 0.12, 1)
 polygon = PackedVector2Array(1, -8, 4, -8, 4, -5, 1, -5)
-
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="HurtShape" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("hurt_shape")
-
-[node name="Marker" type="Polygon2D" parent="."]
-color = Color(0.5, 1.6, 2, 1)
-polygon = PackedVector2Array(-3.5, -19, 3.5, -19, 0, -13.5)
 
 [node name="Num" type="Label" parent="."]
 offset_left = -14.0
-offset_top = -36.0
+offset_top = -34.0
 offset_right = 14.0
-offset_bottom = -23.0
-theme_override_colors/font_color = Color(0.55, 1.5, 1.9, 1)
+offset_bottom = -21.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = SubResource("mono")
 theme_override_font_sizes/font_size = 9
 horizontal_alignment = 1

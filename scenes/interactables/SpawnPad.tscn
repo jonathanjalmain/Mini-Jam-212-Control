@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/interactables/spawn_pad.gd" id="1_pad"]
+
+[sub_resource type="RectangleShape2D" id="pad_shape"]
+size = Vector2(72, 84)
+
+[node name="SpawnPad" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_pad")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("pad_shape")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.3, 0.9, 0.5, 0.18)
+polygon = PackedVector2Array(-36, -42, 36, -42, 36, 42, -36, 42)

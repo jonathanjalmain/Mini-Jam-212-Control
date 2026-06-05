@@ -26,6 +26,10 @@ var bullet_scene: PackedScene = null
 var bullet_parent: Node = null
 var carrying_item: Node = null
 
+var can_jump := true
+var can_dash := true
+var can_shoot := true
+
 var facing := 1
 @onready var _facing_visual: Node2D = get_node_or_null("Visual")
 var _prev_jump := false
@@ -65,8 +69,8 @@ func step(f: InputFrame) -> void:
 	if _dash_cd > 0:
 		_dash_cd -= 1
 
-	var can_dash := carrying_item == null
-	if dash_just and can_dash and not _dashing and _dash_cd <= 0:
+	var dash_allowed := can_dash and not f.carrying
+	if dash_just and dash_allowed and not _dashing and _dash_cd <= 0:
 		_dashing = true
 		_dash_timer = dash_ticks
 		_dash_cd = dash_cooldown_ticks
@@ -86,18 +90,22 @@ func step(f: InputFrame) -> void:
 			velocity.x = move_toward(velocity.x, target, accel * FIXED_DT)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, friction * FIXED_DT)
-		if _jump_buffer > 0 and _coyote > 0:
+		if _jump_buffer > 0 and _coyote > 0 and can_jump:
 			var jv := jump_velocity
-			if carrying_item != null:
+			if f.carrying:
 				jv *= 0.72
 			velocity.y = jv
 			_jump_buffer = 0
 			_coyote = 0
 
-	if shoot_just and _can_shoot():
+	if shoot_just and can_shoot and _can_shoot():
 		_do_shoot()
 
 	move_and_slide()
+
+
+func is_dashing() -> bool:
+	return _dashing
 
 
 func reset_movement() -> void:

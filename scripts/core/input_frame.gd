@@ -6,6 +6,7 @@ var right := false
 var jump := false
 var dash := false
 var shoot := false
+var carrying := false
 
 static func capture() -> InputFrame:
 	var f := InputFrame.new()

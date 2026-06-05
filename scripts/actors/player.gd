@@ -7,9 +7,14 @@ var safe := true
 var _dead := false
 
 @onready var _hurtbox: Area2D = $Hurtbox
+@onready var _num: Label = get_node_or_null("Num")
 
 func _ready() -> void:
 	add_to_group("player")
+
+func set_number(n: int) -> void:
+	if _num:
+		_num.text = "%02d" % n
 
 
 func _can_shoot() -> bool:
@@ -48,3 +53,13 @@ func reset_to_spawn(pos: Vector2, ammo_count: int) -> void:
 	carrying_item = null
 	ammo = ammo_count
 	Events.ammo_changed.emit(ammo)
+
+func revive(pos: Vector2) -> void:
+	global_position = pos
+	reset_movement()
+	_dead = false
+	safe = false
+	carrying_item = null
+
+func is_dead() -> bool:
+	return _dead
