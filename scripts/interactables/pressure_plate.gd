@@ -6,15 +6,25 @@ extends Area2D
 var pressed := false
 
 @onready var _vis: Polygon2D = get_node_or_null("Visual")
+var _sfx: AudioStreamPlayer
 
 func _ready() -> void:
 	add_to_group("resettable")
+	_sfx = AudioStreamPlayer.new()
+	_sfx.bus = "SFX"
+	_sfx.volume_db = -10.0
+	var path := "res://assets/soundEffect/pressurePlate.mp3"
+	if ResourceLoader.exists(path):
+		_sfx.stream = load(path)
+	add_child(_sfx)
 	_apply()
 
 func _physics_process(_delta: float) -> void:
 	var now := not get_overlapping_bodies().is_empty()
 	if now != pressed:
 		pressed = now
+		if now and _sfx.stream:
+			_sfx.play()
 		_apply()
 
 func _apply() -> void:

@@ -77,6 +77,7 @@ func step(f: InputFrame) -> void:
 		var ddir := dir if dir != 0 else facing
 		velocity.x = ddir * dash_speed
 		velocity.y = 0.0
+		_sfx_dash()
 
 	if _dashing:
 		_dash_timer -= 1
@@ -97,11 +98,13 @@ func step(f: InputFrame) -> void:
 			velocity.y = jv
 			_jump_buffer = 0
 			_coyote = 0
+			_sfx_jump()
 
 	if shoot_just and can_shoot and _can_shoot():
 		_do_shoot()
 
 	move_and_slide()
+	_sfx_walk(dir != 0 and not _dashing and is_on_floor())
 
 
 func is_dashing() -> bool:
@@ -118,6 +121,16 @@ func reset_movement() -> void:
 	_prev_jump = false
 	_prev_dash = false
 	_prev_shoot = false
+
+
+func _sfx_jump() -> void:
+	pass
+
+func _sfx_dash() -> void:
+	pass
+
+func _sfx_walk(_active: bool) -> void:
+	pass
 
 
 func _can_shoot() -> bool:

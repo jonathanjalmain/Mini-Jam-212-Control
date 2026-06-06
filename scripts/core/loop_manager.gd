@@ -5,6 +5,7 @@ extends Node2D
 @export var player_scene: PackedScene
 @export var clone_scene: PackedScene
 @export var bullet_scene: PackedScene
+@export_file("*.tscn") var win_scene := "res://scenes/main/LevelSelect.tscn"
 
 var level_index := 0
 var level: Node = null
@@ -28,6 +29,7 @@ func _ready() -> void:
 		push_error("LoopManager: no levels assigned")
 		return
 	Events.level_won.connect(_on_level_won)
+	Music.play_gameplay()
 	load_level(level_index)
 
 
@@ -36,6 +38,11 @@ func _on_level_won() -> void:
 		return
 	_won = true
 	Events.log_line.emit("OBJECTIVE COMPLETE // SUBJECT RELEASED")
+	get_tree().create_timer(1.8).timeout.connect(_go_to_select)
+
+
+func _go_to_select() -> void:
+	get_tree().change_scene_to_file(win_scene)
 
 
 func load_level(idx: int) -> void:
@@ -121,6 +128,9 @@ func reset_map_full() -> void:
 	resets_used = 0
 	_won = false
 	_reset_cycle_state()
+	for n in get_tree().get_nodes_in_group("item"):
+		if n.has_method("reset_state"):
+			n.reset_state()
 	Events.map_reset.emit()
 	Events.cycle_changed.emit(1, max_resets)
 

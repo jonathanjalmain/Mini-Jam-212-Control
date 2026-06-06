@@ -9,4 +9,4 @@ signal player_died
 signal level_won
 signal map_reset
 signal log_line(text: String)
-signal subtitle(text: String)
+signal subtitle(text: String, voice: String)

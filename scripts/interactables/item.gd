@@ -8,7 +8,6 @@ var _home := Vector2.ZERO
 @onready var _vis: Polygon2D = get_node_or_null("Visual")
 
 func _ready() -> void:
-	add_to_group("resettable")
 	add_to_group("item")
 	_home = global_position
 	body_entered.connect(_on_body_entered)

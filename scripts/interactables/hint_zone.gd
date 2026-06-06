@@ -1,6 +1,7 @@
 extends Area2D
 
 @export_multiline var text := ""
+@export var as_subtitle := false
 
 var _fired := false
 
@@ -12,4 +13,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 	if body.is_in_group("player"):
 		_fired = true
-		Events.log_line.emit(text)
+		if as_subtitle:
+			Events.subtitle.emit(text, "")
+		else:
+			Events.log_line.emit(text)
