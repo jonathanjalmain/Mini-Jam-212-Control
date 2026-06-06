@@ -7,8 +7,11 @@ const LEVELS := [
 	{"name": "CHAMBER 03", "path": "res://scenes/main/Chamber03.tscn"},
 	{"name": "CHAMBER 04", "path": "res://scenes/main/Chamber04.tscn"},
 	{"name": "CHAMBER 05", "path": "res://scenes/main/Chamber05.tscn"},
-	{"name": "SETTINGS", "path": "res://scenes/main/Settings.tscn"},
-	{"name": "BACK", "path": "res://scenes/main/MainMenu.tscn"},
+	{"name": "CHAMBER 06", "path": "res://scenes/main/Chamber06.tscn"},
+	{"name": "CHAMBER 07", "path": "res://scenes/main/Chamber07.tscn"},
+	{"name": "CHAMBER 08", "path": "res://scenes/main/Chamber08.tscn"},
+	{"name": "CHAMBER 09", "path": "res://scenes/main/Chamber09.tscn"},
+	{"name": "MAIN MENU", "path": "res://scenes/main/MainMenu.tscn"},
 ]
 
 @onready var _list: Label = $Root/List

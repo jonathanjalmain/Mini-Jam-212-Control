@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene format=3 uid="uid://b0omunh1k2ckl"]
 
-[ext_resource type="Script" path="res://scripts/core/level.gd" id="1_level"]
+[ext_resource type="Script" uid="uid://bnb0qad8m6qqt" path="res://scripts/core/level.gd" id="1_level"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/SpawnPad.tscn" id="2_pad"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/PressurePlate.tscn" id="3_plate"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/Door.tscn" id="4_door"]
@@ -20,97 +20,90 @@ size = Vector2(24, 360)
 [sub_resource type="RectangleShape2D" id="doortop"]
 size = Vector2(16, 64)
 
-[node name="Level01" type="Node2D"]
+[node name="Level01" type="Node2D" unique_id=1648387227]
 script = ExtResource("1_level")
 cycle_duration_ticks = 720
 max_resets = 3
-bullets_per_map = 2
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="." unique_id=758340335]
 position = Vector2(320, 332)
-collision_layer = 1
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="Floor"]
+[node name="Shape" type="CollisionShape2D" parent="Floor" unique_id=509970006]
 shape = SubResource("hwall")
 
-[node name="Visual" type="Polygon2D" parent="Floor"]
+[node name="Visual" type="Polygon2D" parent="Floor" unique_id=1081659679]
 color = Color(0.18, 0.2, 0.28, 1)
 polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
 
-[node name="UpperPlatform" type="StaticBody2D" parent="."]
+[node name="UpperPlatform" type="StaticBody2D" parent="." unique_id=1006339229]
 position = Vector2(384, 208)
-collision_layer = 1
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="UpperPlatform"]
+[node name="Shape" type="CollisionShape2D" parent="UpperPlatform" unique_id=262641657]
 shape = SubResource("plat")
 
-[node name="Visual" type="Polygon2D" parent="UpperPlatform"]
+[node name="Visual" type="Polygon2D" parent="UpperPlatform" unique_id=1415804865]
 color = Color(0.22, 0.25, 0.34, 1)
 polygon = PackedVector2Array(-244, -8, 244, -8, 244, 8, -244, 8)
 
-[node name="Ceiling" type="StaticBody2D" parent="."]
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=2058304411]
 position = Vector2(320, 16)
-collision_layer = 1
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="Ceiling"]
+[node name="Shape" type="CollisionShape2D" parent="Ceiling" unique_id=326605764]
 shape = SubResource("hwall")
 
-[node name="WallLeft" type="StaticBody2D" parent="."]
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=572412120]
 position = Vector2(12, 180)
-collision_layer = 1
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="WallLeft"]
+[node name="Shape" type="CollisionShape2D" parent="WallLeft" unique_id=271219419]
 shape = SubResource("vwall")
 
-[node name="Visual" type="Polygon2D" parent="WallLeft"]
+[node name="Visual" type="Polygon2D" parent="WallLeft" unique_id=1743219960]
 color = Color(0.18, 0.2, 0.28, 1)
 polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
 
-[node name="WallRight" type="StaticBody2D" parent="."]
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1618301335]
 position = Vector2(628, 180)
-collision_layer = 1
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="WallRight"]
+[node name="Shape" type="CollisionShape2D" parent="WallRight" unique_id=2041587274]
 shape = SubResource("vwall")
 
-[node name="Visual" type="Polygon2D" parent="WallRight"]
+[node name="Visual" type="Polygon2D" parent="WallRight" unique_id=1094916538]
 color = Color(0.18, 0.2, 0.28, 1)
 polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
 
-[node name="DoorWall" type="StaticBody2D" parent="."]
+[node name="DoorWall" type="StaticBody2D" parent="." unique_id=1629335464]
 position = Vector2(400, 48)
-collision_layer = 1
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="DoorWall"]
+[node name="Shape" type="CollisionShape2D" parent="DoorWall" unique_id=960048885]
 shape = SubResource("doortop")
 
-[node name="Visual" type="Polygon2D" parent="DoorWall"]
+[node name="Visual" type="Polygon2D" parent="DoorWall" unique_id=172341008]
 color = Color(0.18, 0.2, 0.28, 1)
 polygon = PackedVector2Array(-8, -32, 8, -32, 8, 32, -8, 32)
 
-[node name="Door" parent="." instance=ExtResource("4_door")]
+[node name="Door" parent="." unique_id=1328441462 instance=ExtResource("4_door")]
 position = Vector2(400, 140)
 
-[node name="PressurePlate" parent="." instance=ExtResource("3_plate")]
+[node name="PressurePlate" parent="." unique_id=2011753299 instance=ExtResource("3_plate")]
 position = Vector2(70, 316)
 targets = Array[NodePath]([NodePath("../Door")])
 
-[node name="Item" parent="." instance=ExtResource("5_item")]
+[node name="Item" parent="." unique_id=1741262076 instance=ExtResource("5_item")]
 position = Vector2(540, 186)
 
-[node name="GoalZone" parent="." instance=ExtResource("6_goal")]
+[node name="GoalZone" parent="." unique_id=781524067 instance=ExtResource("6_goal")]
 position = Vector2(260, 190)
 
-[node name="SpawnPad" parent="." instance=ExtResource("2_pad")]
+[node name="SpawnPad" parent="." unique_id=1251043433 instance=ExtResource("2_pad")]
 position = Vector2(190, 184)
 
-[node name="HintObjective" parent="." instance=ExtResource("7_hint")]
+[node name="HintObjective" parent="." unique_id=1313484013 instance=ExtResource("7_hint")]
 position = Vector2(205, 175)
 text = "Retrieve the core. Return it to entry. You know the way."
 as_subtitle = true
