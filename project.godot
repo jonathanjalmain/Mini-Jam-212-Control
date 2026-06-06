@@ -13,7 +13,7 @@ config_version=5
 config/name="Overlap"
 config/description="Time-loop puzzle platformer. You are the enemy."
 config/tags=PackedStringArray("current_game_dev")
-run/main_scene="res://scenes/main/Tutorial.tscn"
+run/main_scene="res://scenes/main/MainMenu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

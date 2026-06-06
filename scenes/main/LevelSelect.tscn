@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://catriixetff5a"]
+
+[ext_resource type="Script" uid="uid://bpe36ny5d534k" path="res://scripts/ui/level_select.gd" id="1_sel"]
+[ext_resource type="Shader" uid="uid://c5t4iiwyxkcbr" path="res://scripts/shaders/crt.gdshader" id="2_crt"]
+
+[sub_resource type="SystemFont" id="mono"]
+font_names = PackedStringArray("Consolas", "Lucida Console", "Courier New", "monospace")
+
+[sub_resource type="ShaderMaterial" id="crt_mat"]
+shader = ExtResource("2_crt")
+shader_parameter/line_strength = 0.14
+shader_parameter/vignette_amt = 0.85
+
+[node name="LevelSelect" type="CanvasLayer" unique_id=499954996]
+layer = 15
+script = ExtResource("1_sel")
+
+[node name="Root" type="Control" parent="." unique_id=261401]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bg" type="ColorRect" parent="Root" unique_id=1663104162]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.035, 0.045, 0.04, 1)
+
+[node name="Header" type="Label" parent="Root" unique_id=1302079051]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 44.0
+offset_right = 592.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(1, 0.74, 0.3, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 13
+text = "// CONTROL  ---  CHAMBER SELECT"
+
+[node name="Sep" type="Label" parent="Root" unique_id=21966579]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 64.0
+offset_right = 592.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.3, 0.7, 0.45, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 11
+text = "--------------------------------------------"
+
+[node name="List" type="Label" parent="Root" unique_id=2091941513]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 100.0
+offset_right = 592.0
+offset_bottom = 280.0
+theme_override_colors/font_color = Color(0.46, 1.5, 0.7, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 14
+
+[node name="Footer" type="Label" parent="Root" unique_id=413062412]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 318.0
+offset_right = 592.0
+offset_bottom = 334.0
+theme_override_colors/font_color = Color(0.4, 0.86, 0.55, 0.85)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 10
+text = "[UP/DOWN] SELECT      [ENTER] LOAD"
+
+[node name="Scanlines" type="ColorRect" parent="Root" unique_id=1803744520]
+material = SubResource("crt_mat")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
