@@ -8,5 +8,6 @@ signal clone_frozen
 signal player_died
 signal level_won
 signal map_reset
+signal cycle_restarted
 signal log_line(text: String)
 signal subtitle(text: String, voice: String)

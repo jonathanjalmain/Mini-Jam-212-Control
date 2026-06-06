@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 Audio="*res://scripts/core/audio.gd"
 Events="*res://scripts/core/events.gd"
 Music="*res://scripts/core/music.gd"
+Sfx="*res://scripts/core/sfx.gd"
 
 [display]
 

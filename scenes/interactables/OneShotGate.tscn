@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://74xq42gbf07j"]
+
+[ext_resource type="Script" uid="uid://jkmr7k4owhgn" path="res://scripts/interactables/one_shot_gate.gd" id="1_gate"]
+
+[sub_resource type="RectangleShape2D" id="detect"]
+size = Vector2(44, 96)
+
+[sub_resource type="RectangleShape2D" id="barrier"]
+size = Vector2(12, 96)
+
+[node name="OneShotGate" type="Area2D" unique_id=1743379838]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_gate")
+
+[node name="Detector" type="CollisionShape2D" parent="." unique_id=995660482]
+scale = Vector2(0.31999987, 1)
+shape = SubResource("detect")
+
+[node name="Fill" type="Polygon2D" parent="." unique_id=647575261]
+color = Color(0.65, 0.45, 1, 0.22)
+polygon = PackedVector2Array(-6, -48, 6, -48, 6, 48, -6, 48)
+
+[node name="Frame" type="Line2D" parent="." unique_id=1589412236]
+points = PackedVector2Array(-6, -48, 6, -48, 6, 48, -6, 48, -6, -48)
+width = 2.0
+default_color = Color(0.72, 0.5, 1.1, 0.85)
+
+[node name="Barrier" type="StaticBody2D" parent="." unique_id=609138563]
+collision_mask = 0
+
+[node name="BShape" type="CollisionShape2D" parent="Barrier" unique_id=1072130771]
+shape = SubResource("barrier")
+disabled = true

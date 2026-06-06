@@ -58,6 +58,7 @@ func load_level(idx: int) -> void:
 	max_resets = level.max_resets
 	bullets_per_map = level.bullets_per_map
 	_spawn_player()
+	player.set_ammo(bullets_per_map)
 	_reset_cycle_state()
 	Events.cycle_changed.emit(1, max_resets)
 
@@ -84,6 +85,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	if Input.is_action_just_pressed("restart_cycle"):
 		Events.log_line.emit("CYCLE TERMINATED // SUBJECT REQUEST")
+		Events.cycle_restarted.emit()
 		end_cycle()
 		return
 
@@ -128,6 +130,7 @@ func reset_map_full() -> void:
 	resets_used = 0
 	_won = false
 	_reset_cycle_state()
+	player.set_ammo(bullets_per_map)
 	for n in get_tree().get_nodes_in_group("item"):
 		if n.has_method("reset_state"):
 			n.reset_state()
@@ -143,7 +146,7 @@ func _reset_cycle_state() -> void:
 	for n in get_tree().get_nodes_in_group("resettable"):
 		if n.has_method("reset_state"):
 			n.reset_state()
-	player.reset_to_spawn(level.spawn_pad.global_position, bullets_per_map)
+	player.reset_to_spawn(level.spawn_pad.global_position)
 	player.set_number(resets_used + 1)
 	_spawn_clones()
 
@@ -161,6 +164,7 @@ func _spawn_clones() -> void:
 		c.setup(clone_recordings[i], _clone_color(i, n))
 		c.bullet_scene = bullet_scene
 		c.bullet_parent = level
+		c.ammo = bullets_per_map
 		level.add_child(c)
 		c.set_number(i + 1)
 		c.global_position = level.spawn_pad.global_position

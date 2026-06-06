@@ -13,7 +13,7 @@ func _physics_process(_delta: float) -> void:
 	if _done:
 		return
 	for b in get_overlapping_bodies():
-		if b.is_in_group("player") and b.carrying_item != null:
+		if (b.is_in_group("player") or b.is_in_group("clones")) and b.carrying_item != null:
 			_done = true
 			Events.level_won.emit()
 			return

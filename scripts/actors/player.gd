@@ -87,13 +87,15 @@ func die() -> void:
 		loop_manager.on_player_died()
 
 
-func reset_to_spawn(pos: Vector2, ammo_count: int) -> void:
+func reset_to_spawn(pos: Vector2) -> void:
 	global_position = pos
 	reset_movement()
 	_dead = false
 	safe = true
 	carrying_item = null
-	ammo = ammo_count
+
+func set_ammo(n: int) -> void:
+	ammo = n
 	Events.ammo_changed.emit(ammo)
 
 func revive(pos: Vector2) -> void:

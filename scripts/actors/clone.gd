@@ -7,6 +7,8 @@ const LAYER_FROZEN := 8
 var frames: Array[InputFrame] = []
 var replay_tick := 0
 var frozen := false
+var dead := false
+var ammo := 0
 var _pending_color := Color.WHITE
 
 @onready var _visual: Node2D = $Visual
@@ -34,9 +36,17 @@ func _ready() -> void:
 
 
 func tick_update() -> void:
-	if frozen:
+	if frozen or dead:
 		return
 	step(_next_frame())
+
+
+func die() -> void:
+	if dead or frozen:
+		return
+	dead = true
+	remove_from_group("clones")
+	queue_free()
 
 
 func _next_frame() -> InputFrame:
@@ -48,13 +58,19 @@ func _next_frame() -> InputFrame:
 
 
 func _can_shoot() -> bool:
-	return not frozen
+	return not frozen and ammo > 0
+
+
+func _do_shoot() -> void:
+	super._do_shoot()
+	ammo -= 1
 
 
 func freeze() -> void:
 	if frozen:
 		return
 	frozen = true
+	carrying_item = null
 	velocity = Vector2.ZERO
 	collision_layer = LAYER_FROZEN
 	if _visual:
