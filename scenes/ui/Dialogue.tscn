@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bpkeyr55vf8d4"]
+
+[ext_resource type="Script" uid="uid://b8m8liclqc6w7" path="res://scripts/ui/dialogue.gd" id="1_dlg"]
+
+[sub_resource type="SystemFont" id="mono"]
+font_names = PackedStringArray("Consolas", "Lucida Console", "Courier New", "monospace")
+subpixel_positioning = 0
+
+[node name="Dialogue" type="CanvasLayer" unique_id=1827466597]
+layer = 3
+script = ExtResource("1_dlg")
+
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+
+[node name="Root" type="Control" parent="." unique_id=1050432424]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Box" type="ColorRect" parent="Root" unique_id=1116265101]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 94.0
+offset_right = 580.0
+offset_bottom = 142.0
+mouse_filter = 2
+color = Color(0.02, 0.05, 0.04, 0.82)
+
+[node name="Tag" type="Label" parent="Root/Box" unique_id=1078141844]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 200.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(1, 0.74, 0.3, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 8
+text = "// SUPERVISOR"
+
+[node name="Text" type="Label" parent="Root/Box" unique_id=881118313]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 512.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.5, 1.4, 0.72, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 2

@@ -19,7 +19,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Audio="*res://scripts/core/audio.gd"
 Events="*res://scripts/core/events.gd"
+Music="*res://scripts/core/music.gd"
 
 [display]
 

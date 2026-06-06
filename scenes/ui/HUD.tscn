@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hud"]
+
+[sub_resource type="SystemFont" id="mono"]
+font_names = PackedStringArray("Consolas", "Lucida Console", "Courier New", "monospace")
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Root" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Header" type="Label" parent="Root"]
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 300.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(1, 0.74, 0.3, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 11
+text = "// CONTROL  —  SUBJECT MONITOR"
+
+[node name="Cycle" type="Label" parent="Root"]
+offset_left = 8.0
+offset_top = 20.0
+offset_right = 300.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.45, 1, 0.63, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 12
+text = "CYCLE 01   RESETS 00"
+
+[node name="Ammo" type="Label" parent="Root"]
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 300.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.45, 1, 0.63, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 12
+text = "AMMO 00"
+
+[node name="TimerBg" type="ColorRect" parent="Root"]
+offset_left = 8.0
+offset_top = 52.0
+offset_right = 208.0
+offset_bottom = 60.0
+color = Color(0.12, 0.16, 0.14, 1)
+
+[node name="TimerFill" type="ColorRect" parent="Root/TimerBg"]
+offset_right = 200.0
+offset_bottom = 8.0
+color = Color(0.45, 1, 0.63, 1)
+
+[node name="Log" type="Label" parent="Root"]
+offset_left = 8.0
+offset_top = 296.0
+offset_right = 400.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.4, 0.86, 0.55, 0.85)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 10
+vertical_alignment = 2

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/supervisor.gd" id="1_sup"]
+[ext_resource type="Shader" path="res://scripts/shaders/crt.gdshader" id="2_crt"]
+
+[sub_resource type="ShaderMaterial" id="crt_mat"]
+shader = ExtResource("2_crt")
+shader_parameter/line_strength = 0.1
+shader_parameter/vignette_amt = 0.7
+
+[node name="Supervisor" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_sup")
+
+[node name="Eye" type="Node2D" parent="."]
+position = Vector2(320, 46)
+
+[node name="Sclera" type="Polygon2D" parent="Eye"]
+color = Color(0.09, 0.12, 0.16, 0.92)
+polygon = PackedVector2Array(24, 0, 16.97, 16.97, 0, 24, -16.97, 16.97, -24, 0, -16.97, -16.97, 0, -24, 16.97, -16.97)
+
+[node name="Iris" type="Polygon2D" parent="Eye"]
+color = Color(0.45, 1, 0.63, 1)
+polygon = PackedVector2Array(14, 0, 9.9, 9.9, 0, 14, -9.9, 9.9, -14, 0, -9.9, -9.9, 0, -14, 9.9, -9.9)
+
+[node name="Pupil" type="Polygon2D" parent="Eye"]
+color = Color(0.04, 0.05, 0.07, 1)
+polygon = PackedVector2Array(6, 0, 4.24, 4.24, 0, 6, -4.24, 4.24, -6, 0, -4.24, -4.24, 0, -6, 4.24, -4.24)
+
+[node name="Flash" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0)
+mouse_filter = 2
+
+[node name="Scanlines" type="ColorRect" parent="."]
+material = SubResource("crt_mat")
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
