@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://dl58ihc78hl3p"]
+
+[ext_resource type="Script" uid="uid://bnb0qad8m6qqt" path="res://scripts/core/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/SpawnPad.tscn" id="2_pad"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/PressurePlate.tscn" id="3_plate"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Door.tscn" id="4_door"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Item.tscn" id="5_item"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/GoalZone.tscn" id="6_goal"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/HintZone.tscn" id="7_hint"]
+
+[sub_resource type="RectangleShape2D" id="h640"]
+size = Vector2(640, 24)
+
+[sub_resource type="RectangleShape2D" id="vside"]
+size = Vector2(24, 360)
+
+[sub_resource type="RectangleShape2D" id="step1"]
+size = Vector2(80, 16)
+
+[sub_resource type="RectangleShape2D" id="up"]
+size = Vector2(416, 16)
+
+[node name="Level07" type="Node2D" unique_id=320359076]
+script = ExtResource("1_level")
+cycle_duration_ticks = 900
+max_resets = 2
+bullets_per_map = 0
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=113589534]
+position = Vector2(320, 332)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor" unique_id=1631287474]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor" unique_id=1436748901]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=1903708518]
+position = Vector2(320, 16)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Ceiling" unique_id=1386723505]
+shape = SubResource("h640")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1892734440]
+position = Vector2(12, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallLeft" unique_id=1254147306]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallLeft" unique_id=757477038]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1311485144]
+position = Vector2(628, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallRight" unique_id=1324620859]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallRight" unique_id=1944129234]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="Step1" type="StaticBody2D" parent="." unique_id=286427504]
+position = Vector2(160, 276)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Step1" unique_id=421339753]
+shape = SubResource("step1")
+
+[node name="Visual" type="Polygon2D" parent="Step1" unique_id=744130766]
+color = Color(0.22, 0.25, 0.34, 1)
+polygon = PackedVector2Array(-40, -8, 40, -8, 40, 8, -40, 8)
+
+[node name="UP" type="StaticBody2D" parent="." unique_id=1626326880]
+position = Vector2(408, 224)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="UP" unique_id=1703346848]
+shape = SubResource("up")
+
+[node name="Visual" type="Polygon2D" parent="UP" unique_id=746101044]
+color = Color(0.22, 0.25, 0.34, 1)
+polygon = PackedVector2Array(-208, -8, 208, -8, 208, 8, -208, 8)
+
+[node name="DU" parent="." unique_id=598202051 instance=ExtResource("4_door")]
+position = Vector2(320, 156)
+
+[node name="D2" parent="." unique_id=611404890 instance=ExtResource("4_door")]
+position = Vector2(489, 279)
+
+[node name="PlateL" parent="." unique_id=1885493965 instance=ExtResource("3_plate")]
+position = Vector2(440, 316)
+targets = Array[NodePath]([NodePath("../DU")])
+
+[node name="PlateU" parent="." unique_id=91975255 instance=ExtResource("3_plate")]
+position = Vector2(600, 212)
+targets = Array[NodePath]([NodePath("../D2")])
+
+[node name="Item" parent="." unique_id=505373413 instance=ExtResource("5_item")]
+position = Vector2(550, 308)
+
+[node name="GoalZone" parent="." unique_id=1763248472 instance=ExtResource("6_goal")]
+position = Vector2(110, 300)
+
+[node name="SpawnPad" parent="." unique_id=1960727732 instance=ExtResource("2_pad")]
+position = Vector2(70, 300)
+
+[node name="HintObjective" parent="." unique_id=2031620774 instance=ExtResource("7_hint")]
+position = Vector2(110, 268)
+text = "Your past self is stuck pushing on the upper gate. Open it from the floor plate; it runs on and opens YOUR gate from the far end. Then take the core."
+as_subtitle = true

@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/core/loop_manager.gd" id="1_loop"]
+[ext_resource type="PackedScene" path="res://scenes/levels/Level06.tscn" id="2_level"]
+[ext_resource type="PackedScene" path="res://scenes/actors/Player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/actors/Clone.tscn" id="4_clone"]
+[ext_resource type="PackedScene" path="res://scenes/actors/Bullet.tscn" id="5_bullet"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="6_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/Supervisor.tscn" id="7_sup"]
+[ext_resource type="PackedScene" path="res://scenes/ui/Dialogue.tscn" id="8_dlg"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 4
+glow_enabled = true
+glow_levels/4 = 1.0
+glow_levels/5 = 1.0
+glow_intensity = 0.9
+glow_bloom = 0.05
+glow_hdr_threshold = 0.85
+
+[node name="Chamber06" type="Node2D"]
+script = ExtResource("1_loop")
+levels = Array[PackedScene]([ExtResource("2_level")])
+player_scene = ExtResource("3_player")
+clone_scene = ExtResource("4_clone")
+bullet_scene = ExtResource("5_bullet")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="HUD" parent="." instance=ExtResource("6_hud")]
+
+[node name="Supervisor" parent="." instance=ExtResource("7_sup")]
+
+[node name="Dialogue" parent="." instance=ExtResource("8_dlg")]

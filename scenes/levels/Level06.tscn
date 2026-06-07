@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://wyduhtcdtxm5"]
+
+[ext_resource type="Script" uid="uid://bnb0qad8m6qqt" path="res://scripts/core/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/PressurePlate.tscn" id="2_53g61"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/SpawnPad.tscn" id="2_pad"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Item.tscn" id="3_item"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Door.tscn" id="3_q4gtt"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/GoalZone.tscn" id="4_goal"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/HintZone.tscn" id="5_hint"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/OneShotGate.tscn" id="8_hrr6c"]
+
+[sub_resource type="RectangleShape2D" id="h640"]
+size = Vector2(640, 24)
+
+[sub_resource type="RectangleShape2D" id="vside"]
+size = Vector2(24, 360)
+
+[node name="Level06" type="Node2D" unique_id=2014473656]
+script = ExtResource("1_level")
+cycle_duration_ticks = 900
+max_resets = 3
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1680576733]
+position = Vector2(320, 332)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor" unique_id=1404351259]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor" unique_id=1201768295]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor2" type="StaticBody2D" parent="." unique_id=1133876138]
+position = Vector2(279, 234)
+scale = Vector2(0.28000247, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor2" unique_id=1730273959]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor2" unique_id=761627285]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor3" type="StaticBody2D" parent="." unique_id=1131696897]
+position = Vector2(467, 269)
+scale = Vector2(0.16000247, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor3" unique_id=295652251]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor3" unique_id=492175584]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor4" type="StaticBody2D" parent="." unique_id=363323185]
+position = Vector2(569, 269)
+scale = Vector2(0.16000247, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor4" unique_id=402049063]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor4" unique_id=1402322176]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor6" type="StaticBody2D" parent="." unique_id=267415327]
+position = Vector2(178, 206.00002)
+rotation = 1.5707964
+scale = Vector2(0.16000247, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor6" unique_id=690510137]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor6" unique_id=1723093912]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor5" type="StaticBody2D" parent="." unique_id=1139638105]
+position = Vector2(75, 289)
+scale = Vector2(0.16000247, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor5" unique_id=642253984]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor5" unique_id=206848468]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=1851812785]
+position = Vector2(320, 16)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Ceiling" unique_id=51016030]
+shape = SubResource("h640")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1235424963]
+position = Vector2(12, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallLeft" unique_id=1114221993]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallLeft" unique_id=473240553]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=346321506]
+position = Vector2(628, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallRight" unique_id=938435014]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallRight" unique_id=1967153085]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="Plate" parent="." unique_id=658388589 instance=ExtResource("2_53g61")]
+position = Vector2(467, 253)
+targets = Array[NodePath]([NodePath("../DoorB")])
+
+[node name="Plate2" parent="." unique_id=1647177325 instance=ExtResource("2_53g61")]
+position = Vector2(569, 253)
+targets = Array[NodePath]([NodePath("../DoorB2")])
+
+[node name="DoorB" parent="." unique_id=1405033432 instance=ExtResource("3_q4gtt")]
+position = Vector2(305, 284)
+
+[node name="DoorB2" parent="." unique_id=1642302848 instance=ExtResource("3_q4gtt")]
+position = Vector2(220, 284)
+
+[node name="Item" parent="." unique_id=1753978445 instance=ExtResource("3_item")]
+position = Vector2(177, 304)
+
+[node name="GoalZone" parent="." unique_id=1233531478 instance=ExtResource("4_goal")]
+position = Vector2(53, 241)
+
+[node name="HintObjective" parent="." unique_id=568165877 instance=ExtResource("5_hint")]
+position = Vector2(319, 143)
+text = "The violet gate yields to one of you, then seals. Choose who passes - a past self, or you - the rest stay locked out."
+as_subtitle = true
+
+[node name="SpawnPad" parent="." unique_id=477771826 instance=ExtResource("2_pad")]
+position = Vector2(319, 181)
+
+[node name="OneShotGate" parent="." unique_id=822527082 instance=ExtResource("8_hrr6c")]
+position = Vector2(178, 106)

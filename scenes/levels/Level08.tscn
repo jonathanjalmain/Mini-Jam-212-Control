@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://4stmyg484gkk"]
+
+[ext_resource type="Script" uid="uid://bnb0qad8m6qqt" path="res://scripts/core/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/PressurePlate.tscn" id="2_53g61"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/SpawnPad.tscn" id="2_pad"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Item.tscn" id="3_item"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Door.tscn" id="3_q4gtt"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/GoalZone.tscn" id="4_goal"]
+
+[sub_resource type="RectangleShape2D" id="h640"]
+size = Vector2(640, 24)
+
+[sub_resource type="RectangleShape2D" id="vside"]
+size = Vector2(24, 360)
+
+[node name="Level08" type="Node2D" unique_id=2014473656]
+script = ExtResource("1_level")
+cycle_duration_ticks = 900
+max_resets = 2
+bullets_per_map = 0
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1680576733]
+position = Vector2(320, 332)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor" unique_id=1404351259]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor" unique_id=1201768295]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor2" type="StaticBody2D" parent="." unique_id=1133876138]
+position = Vector2(279, 234)
+scale = Vector2(0.28000247, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor2" unique_id=1730273959]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor2" unique_id=761627285]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor3" type="StaticBody2D" parent="." unique_id=1131696897]
+position = Vector2(378, 234)
+scale = Vector2(0.16000247, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor3" unique_id=295652251]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor3" unique_id=492175584]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor4" type="StaticBody2D" parent="." unique_id=363323185]
+position = Vector2(417, 207)
+rotation = 1.5707964
+scale = Vector2(0.08000124, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor4" unique_id=402049063]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor4" unique_id=1402322176]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor8" type="StaticBody2D" parent="." unique_id=1788968691]
+position = Vector2(392, 184.99998)
+rotation = 1.5707964
+scale = Vector2(-0.039998755, 3.12)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor8" unique_id=611508409]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor8" unique_id=1408988109]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Floor5" type="StaticBody2D" parent="." unique_id=1139638105]
+position = Vector2(139, 281)
+scale = Vector2(0.16000247, 1)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor5" unique_id=642253984]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor5" unique_id=206848468]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=1851812785]
+position = Vector2(320, 16)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Ceiling" unique_id=51016030]
+shape = SubResource("h640")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1235424963]
+position = Vector2(12, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallLeft" unique_id=1114221993]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallLeft" unique_id=473240553]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=346321506]
+position = Vector2(628, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallRight" unique_id=938435014]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallRight" unique_id=1967153085]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="Plate" parent="." unique_id=658388589 instance=ExtResource("2_53g61")]
+position = Vector2(382, 218)
+targets = Array[NodePath]([NodePath("../DoorB3"), NodePath("../DoorB")])
+
+[node name="Plate3" parent="." unique_id=226589535 instance=ExtResource("2_53g61")]
+position = Vector2(588, 316)
+targets = Array[NodePath]([NodePath("../DoorB3"), NodePath("../DoorB")])
+
+[node name="Plate2" parent="." unique_id=1647177325 instance=ExtResource("2_53g61")]
+position = Vector2(139, 265)
+targets = Array[NodePath]([NodePath("../DoorB2")])
+
+[node name="DoorB" parent="." unique_id=1405033432 instance=ExtResource("3_q4gtt")]
+position = Vector2(198, 162)
+
+[node name="DoorB3" parent="." unique_id=1087432566 instance=ExtResource("3_q4gtt")]
+position = Vector2(353, 163)
+inverted = true
+
+[node name="DoorB2" parent="." unique_id=1642302848 instance=ExtResource("3_q4gtt")]
+position = Vector2(313, 55)
+rotation = 1.5707964
+
+[node name="Item" parent="." unique_id=1753978445 instance=ExtResource("3_item")]
+position = Vector2(313, 40)
+
+[node name="GoalZone" parent="." unique_id=1233531478 instance=ExtResource("4_goal")]
+position = Vector2(53, 284)
+
+[node name="SpawnPad" parent="." unique_id=477771826 instance=ExtResource("2_pad")]
+position = Vector2(247, 179)

@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://c2f5ylgi2lbld"]
+
+[ext_resource type="Script" uid="uid://bnb0qad8m6qqt" path="res://scripts/core/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/SpawnPad.tscn" id="2_pad"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/PressurePlate.tscn" id="3_plate"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Door.tscn" id="4_door"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Item.tscn" id="5_item"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/GoalZone.tscn" id="6_goal"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Spike.tscn" id="8_spike"]
+
+[sub_resource type="RectangleShape2D" id="h640"]
+size = Vector2(640, 24)
+
+[sub_resource type="RectangleShape2D" id="vside"]
+size = Vector2(24, 360)
+
+[sub_resource type="RectangleShape2D" id="ledge"]
+size = Vector2(50, 16)
+
+[node name="Level04" type="Node2D" unique_id=1402123271]
+script = ExtResource("1_level")
+cycle_duration_ticks = 900
+max_resets = 6
+bullets_per_map = 1
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=741456074]
+position = Vector2(320, 332)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor" unique_id=42582187]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor" unique_id=95241560]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=1808666911]
+position = Vector2(320, 16)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Ceiling" unique_id=766669132]
+shape = SubResource("h640")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=190234990]
+position = Vector2(12, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallLeft" unique_id=845079235]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallLeft" unique_id=1785685863]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1405428348]
+position = Vector2(628, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallRight" unique_id=872754020]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallRight" unique_id=1164846702]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="CoreLedge" type="StaticBody2D" parent="." unique_id=834416357]
+position = Vector2(585, 260)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="CoreLedge" unique_id=1147523687]
+shape = SubResource("ledge")
+
+[node name="Visual" type="Polygon2D" parent="CoreLedge" unique_id=1776309729]
+color = Color(0.22, 0.25, 0.34, 1)
+polygon = PackedVector2Array(-25, -8, 25, -8, 25, 8, -25, 8)
+
+[node name="Door" parent="." unique_id=780846596 instance=ExtResource("4_door")]
+position = Vector2(510, 260)
+
+[node name="Plate" parent="." unique_id=1135788798 instance=ExtResource("3_plate")]
+position = Vector2(380, 316)
+targets = Array[NodePath]([NodePath("../Door"), NodePath("../Spike")])
+
+[node name="Spike" parent="." unique_id=1599034017 instance=ExtResource("8_spike")]
+position = Vector2(455, 314)
+
+[node name="Item" parent="." unique_id=467252600 instance=ExtResource("5_item")]
+position = Vector2(595, 244)
+
+[node name="GoalZone" parent="." unique_id=747945514 instance=ExtResource("6_goal")]
+position = Vector2(90, 300)
+
+[node name="SpawnPad" parent="." unique_id=1478629891 instance=ExtResource("2_pad")]
+position = Vector2(300, 300)
