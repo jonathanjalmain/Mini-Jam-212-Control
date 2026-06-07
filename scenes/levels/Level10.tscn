@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://vti845mbgots"]
+
+[ext_resource type="Script" uid="uid://bnb0qad8m6qqt" path="res://scripts/core/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/SpawnPad.tscn" id="2_pad"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/PressurePlate.tscn" id="3_plate"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/CorridorDoor.tscn" id="4_door"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Item.tscn" id="5_item"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/GoalZone.tscn" id="6_goal"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Spike.tscn" id="8_spike"]
+
+[sub_resource type="RectangleShape2D" id="h640"]
+size = Vector2(640, 24)
+
+[sub_resource type="RectangleShape2D" id="vside"]
+size = Vector2(24, 360)
+
+[sub_resource type="RectangleShape2D" id="corr"]
+size = Vector2(500, 16)
+
+[node name="Level10" type="Node2D" unique_id=1736260860]
+script = ExtResource("1_level")
+cycle_duration_ticks = 1200
+max_resets = 2
+bullets_per_map = 0
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1583296133]
+position = Vector2(320, 332)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Floor" unique_id=1016530115]
+shape = SubResource("h640")
+
+[node name="Visual" type="Polygon2D" parent="Floor" unique_id=2123398502]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-320, -12, 320, -12, 320, 12, -320, 12)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=1530113113]
+position = Vector2(320, 16)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Ceiling" unique_id=1948780107]
+shape = SubResource("h640")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=255706008]
+position = Vector2(12, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallLeft" unique_id=2144565274]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallLeft" unique_id=1248094710]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=859104319]
+position = Vector2(628, 180)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallRight" unique_id=1034579472]
+shape = SubResource("vside")
+
+[node name="Visual" type="Polygon2D" parent="WallRight" unique_id=1870270406]
+color = Color(0.18, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-12, -180, 12, -180, 12, 180, -12, 180)
+
+[node name="LM" type="StaticBody2D" parent="." unique_id=803462057]
+position = Vector2(272, 196)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="LM" unique_id=578120028]
+shape = SubResource("corr")
+
+[node name="Visual" type="Polygon2D" parent="LM" unique_id=1813873130]
+color = Color(0.22, 0.25, 0.34, 1)
+polygon = PackedVector2Array(-250, -8, 250, -8, 250, 8, -250, 8)
+
+[node name="GU1" type="StaticBody2D" parent="." unique_id=1559666528]
+position = Vector2(370, 142)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="GU1" unique_id=1264436036]
+shape = SubResource("corr")
+
+[node name="Visual" type="Polygon2D" parent="GU1" unique_id=2061759156]
+color = Color(0.22, 0.25, 0.34, 1)
+polygon = PackedVector2Array(-250, -8, 250, -8, 250, 8, -250, 8)
+
+[node name="GU2" type="StaticBody2D" parent="." unique_id=1098562413]
+position = Vector2(272, 88)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="GU2" unique_id=1214349453]
+shape = SubResource("corr")
+
+[node name="Visual" type="Polygon2D" parent="GU2" unique_id=654404552]
+color = Color(0.22, 0.25, 0.34, 1)
+polygon = PackedVector2Array(-250, -8, 250, -8, 250, 8, -250, 8)
+
+[node name="PB1" type="StaticBody2D" parent="." unique_id=116902983]
+position = Vector2(370, 250)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="PB1" unique_id=1539366030]
+shape = SubResource("corr")
+
+[node name="Visual" type="Polygon2D" parent="PB1" unique_id=779675430]
+color = Color(0.22, 0.25, 0.34, 1)
+polygon = PackedVector2Array(-250, -8, 250, -8, 250, 8, -250, 8)
+
+[node name="PB2" type="StaticBody2D" parent="." unique_id=331446014]
+position = Vector2(272, 304)
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="PB2" unique_id=930505041]
+shape = SubResource("corr")
+
+[node name="Visual" type="Polygon2D" parent="PB2" unique_id=306425335]
+color = Color(0.22, 0.25, 0.34, 1)
+polygon = PackedVector2Array(-250, -8, 250, -8, 250, 8, -250, 8)
+
+[node name="D1" parent="." unique_id=475691084 instance=ExtResource("4_door")]
+position = Vector2(450, 112)
+
+[node name="D2" parent="." unique_id=760558857 instance=ExtResource("4_door")]
+position = Vector2(350, 112)
+
+[node name="D3" parent="." unique_id=970274518 instance=ExtResource("4_door")]
+position = Vector2(250, 112)
+
+[node name="D4" parent="." unique_id=827537401 instance=ExtResource("4_door")]
+position = Vector2(380, 58)
+
+[node name="D5" parent="." unique_id=1840627090 instance=ExtResource("4_door")]
+position = Vector2(240, 58)
+
+[node name="S1" parent="." unique_id=1903469775 instance=ExtResource("8_spike")]
+position = Vector2(400, 128)
+armed_by_default = true
+
+[node name="S2" parent="." unique_id=373017198 instance=ExtResource("8_spike")]
+position = Vector2(300, 128)
+armed_by_default = true
+
+[node name="S3" parent="." unique_id=63834518 instance=ExtResource("8_spike")]
+position = Vector2(200, 128)
+armed_by_default = true
+
+[node name="S4" parent="." unique_id=825596341 instance=ExtResource("8_spike")]
+position = Vector2(320, 74)
+armed_by_default = true
+
+[node name="S5" parent="." unique_id=1617297315 instance=ExtResource("8_spike")]
+position = Vector2(180, 74)
+armed_by_default = true
+
+[node name="P1" parent="." unique_id=660192246 instance=ExtResource("3_plate")]
+position = Vector2(450, 238)
+targets = Array[NodePath]([NodePath("../D1")])
+
+[node name="P2" parent="." unique_id=1122929121 instance=ExtResource("3_plate")]
+position = Vector2(350, 238)
+targets = Array[NodePath]([NodePath("../D2")])
+
+[node name="P3" parent="." unique_id=1101474420 instance=ExtResource("3_plate")]
+position = Vector2(250, 238)
+targets = Array[NodePath]([NodePath("../D3")])
+
+[node name="P4" parent="." unique_id=1935107000 instance=ExtResource("3_plate")]
+position = Vector2(380, 292)
+targets = Array[NodePath]([NodePath("../D4")])
+
+[node name="P5" parent="." unique_id=316193039 instance=ExtResource("3_plate")]
+position = Vector2(240, 292)
+targets = Array[NodePath]([NodePath("../D5")])
+
+[node name="Item" parent="." unique_id=1981717670 instance=ExtResource("5_item")]
+position = Vector2(60, 72)
+
+[node name="GoalZone" parent="." unique_id=405056995 instance=ExtResource("6_goal")]
+position = Vector2(120, 72)
+
+[node name="SpawnPad" parent="." unique_id=1989770448 instance=ExtResource("2_pad")]
+position = Vector2(301, 168)
+scale = Vector2(1, 0.5999988)
