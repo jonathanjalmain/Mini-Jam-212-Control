@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_pause"]
+
+[sub_resource type="SystemFont" id="mono"]
+font_names = PackedStringArray("Consolas", "Lucida Console", "Courier New", "monospace")
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 128
+process_mode = 3
+script = ExtResource("1_pause")
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="Panel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.03, 0.05, 0.8)
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 110.0
+offset_right = 430.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(1, 0.74, 0.3, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 16
+text = "// PAUSED"
+
+[node name="Options" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 155.0
+offset_right = 500.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(0.46, 1.5, 0.7, 1)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 14
+
+[node name="Footer" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 300.0
+offset_right = 520.0
+offset_bottom = 316.0
+theme_override_colors/font_color = Color(0.4, 0.86, 0.55, 0.85)
+theme_override_fonts/font = SubResource("mono")
+theme_override_font_sizes/font_size = 9
+text = "[ESC] RESUME    [UP/DOWN] SELECT    [ENTER] CONFIRM"

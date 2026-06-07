@@ -37,6 +37,9 @@ func _on_level_won() -> void:
 	if _won:
 		return
 	_won = true
+	var cur := get_tree().current_scene
+	if cur:
+		Progress.mark(cur.scene_file_path)
 	Events.log_line.emit("OBJECTIVE COMPLETE // SUBJECT RELEASED")
 	get_tree().create_timer(1.8).timeout.connect(_go_to_select)
 

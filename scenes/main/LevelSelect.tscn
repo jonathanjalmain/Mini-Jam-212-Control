@@ -53,15 +53,18 @@ theme_override_fonts/font = SubResource("mono")
 theme_override_font_sizes/font_size = 11
 text = "--------------------------------------------"
 
-[node name="List" type="Label" parent="Root" unique_id=2091941513]
+[node name="List" type="RichTextLabel" parent="Root" unique_id=2091941513]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 100.0
 offset_right = 592.0
-offset_bottom = 280.0
-theme_override_colors/font_color = Color(0.46, 1.5, 0.7, 1)
-theme_override_fonts/font = SubResource("mono")
-theme_override_font_sizes/font_size = 14
+offset_bottom = 292.0
+modulate = Color(1.4, 1.4, 1.4, 1)
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 0
+theme_override_fonts/normal_font = SubResource("mono")
+theme_override_font_sizes/normal_font_size = 14
 
 [node name="Footer" type="Label" parent="Root" unique_id=413062412]
 layout_mode = 0
